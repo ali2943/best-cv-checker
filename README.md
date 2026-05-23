@@ -374,6 +374,7 @@ DATABASE_URL=your_database_url
 ## Install Dependencies
 
 ```bash
+cd backend
 pip install -r requirements.txt
 ```
 
@@ -382,6 +383,16 @@ pip install -r requirements.txt
 ```bash
 uvicorn app.main:app --reload
 ```
+
+## Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend runs on `http://localhost:5173` and proxies API calls to `http://localhost:8000`.
 
 ---
 
