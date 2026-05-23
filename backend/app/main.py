@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from app.api.routes import cv, jobs, matching
+from app.api.routes import cv, evaluation, jobs, matching
 
 app = FastAPI(title="CV Checker AI")
 
@@ -13,4 +13,5 @@ def health_check():
 app.include_router(cv.router)
 app.include_router(jobs.router)
 app.include_router(matching.router)
+app.include_router(evaluation.router)
 
