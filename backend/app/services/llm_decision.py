@@ -2,9 +2,10 @@ import json
 import os
 from typing import Any, Dict, List
 
-from openai import OpenAI
+from mistralai.client import MistralClient
+from mistralai.models.chat_completion import ChatMessage
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = MistralClient(api_key=os.getenv("MISTRAL_API_KEY"))
 
 
 def evaluate_candidates(
@@ -13,7 +14,7 @@ def evaluate_candidates(
     candidates: List[Dict[str, Any]],
 ) -> Dict[str, Any]:
     """
-    Evaluate candidates using OpenAI LLM with expert recruiter perspective.
+    Evaluate candidates using Mistral AI LLM with expert recruiter perspective.
     
     Args:
         job_title: Job position title
@@ -79,11 +80,14 @@ Return ONLY valid JSON, no other text. Structure:
 }}"""
 
     try:
-        response = client.chat.completions.create(
-            model=os.getenv("OPENAI_MODEL", "gpt-4"),
+        response = client.chat(
+            model=os.getenv("MISTRAL_MODEL", "mistral-large-latest"),
             messages=[
-                {"role": "system", "content": "You are an expert technical recruiter. Return ONLY valid JSON."},
-                {"role": "user", "content": prompt}
+                ChatMessage(
+                    role="system",
+                    content="You are an expert technical recruiter. Return ONLY valid JSON.",
+                ),
+                ChatMessage(role="user", content=prompt),
             ],
             temperature=float(os.getenv("EVALUATION_TEMPERATURE", "0.7")),
             max_tokens=4000,

@@ -74,7 +74,7 @@ This is a learning-focused project and not intended for enterprise production us
 |---|---|
 | Backend Framework | FastAPI |
 | NLP | Sentence Transformers |
-| LLM | OpenAI GPT |
+| LLM | Mistral AI |
 | Database | PostgreSQL |
 | ORM | SQLAlchemy |
 | Validation | Pydantic |
@@ -350,7 +350,7 @@ docx2txt
 python-multipart
 numpy
 scikit-learn
-openai
+mistralai
 sqlalchemy
 psycopg2-binary
 pydantic
@@ -363,7 +363,7 @@ pydantic
 Create a `.env` file:
 
 ```env
-OPENAI_API_KEY=your_api_key
+MISTRAL_API_KEY=your_api_key
 DATABASE_URL=your_database_url
 ```
 

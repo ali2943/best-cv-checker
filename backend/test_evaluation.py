@@ -1,6 +1,6 @@
 """
 Quick test script for Phase 5 LLM evaluation.
-Run this after setting OPENAI_API_KEY in .env
+Run this after setting MISTRAL_API_KEY in .env
 
 Usage:
   python -m pytest backend/tests/test_evaluation.py -v
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     print("\nSample data is defined in this file.")
     print("\nTo test the API:")
     print("1. Start the server: uvicorn app.main:app --reload")
-    print("2. Set OPENAI_API_KEY in .env")
+    print("2. Set MISTRAL_API_KEY in .env")
     print("3. Upload CVs via POST /upload-cv")
     print("4. Create job via POST /jobs")
     print("5. Match candidates via POST /match")
